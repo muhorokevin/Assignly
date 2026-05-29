@@ -308,10 +308,10 @@ export default function AssignmentForm({ onSubmissionsUpdated }: AssignmentFormP
       createdAt: new Date().toISOString()
     };
 
-    // Save in localStorage under Assignly
-    const saved = localStorage.getItem('assignly_submissions');
+    // Save in localStorage under Assignify
+    const saved = localStorage.getItem('assignify_submissions');
     const existing = saved ? JSON.parse(saved) : [];
-    localStorage.setItem('assignly_submissions', JSON.stringify([newSubmission, ...existing]));
+    localStorage.setItem('assignify_submissions', JSON.stringify([newSubmission, ...existing]));
 
     setLatestSubmission(newSubmission);
     setShowSuccessModal(true);
@@ -342,7 +342,7 @@ export default function AssignmentForm({ onSubmissionsUpdated }: AssignmentFormP
       ? `${latestSubmission.pages} Hour(s)`
       : `${latestSubmission.pages} Page(s) (~${(latestSubmission.wordCount || latestSubmission.pages * 275).toLocaleString()} words)`;
 
-    const message = `Hello Assignly! 🌟 I have registered a secure academic support request. Here are my details:
+    const message = `Hello Assignify! 🌟 I have registered a secure academic support request. Here are my details:
 
 📚 Subject: ${latestSubmission.course}
 📝 Task Type: ${latestSubmission.assignmentType}
@@ -372,7 +372,7 @@ Can my dedicated graduate helper review files and confirm details on ${latestSub
 
     return `Subject: New Academic Coaching Request - ${latestSubmission.course} (${latestSubmission.assignmentType})
 
-Hello Assignly Support Team,
+Hello Assignify Support Team,
 
 I recently submitted my coursework details on the landing page. Here is the copy of my instructions and calculations:
 
@@ -1005,7 +1005,7 @@ Please connect me with a verified grad assistant as soon as possible.`;
                   </span>
                 </div>
                 <div className="mt-2.5 px-3 text-[9.5px] text-gray-500 border-t border-gray-200/60 pt-2 text-left leading-relaxed">
-                  <strong className="text-blue-600 font-extrabold uppercase tracking-wider">Academics Trust Note:</strong> Assignly guarantees budget stability. Base rates may slightly shift within this student-friendly range once assignment rubrics are fully assessed.
+                  <strong className="text-blue-600 font-extrabold uppercase tracking-wider">Academics Trust Note:</strong> Assignify guarantees budget stability. Base rates may slightly shift within this student-friendly range once assignment rubrics are fully assessed.
                 </div>
                 <p className="text-[10px] text-gray-400 mt-3.5 flex items-center justify-center gap-1 px-3">
                   <ShieldCheck className="w-3.5 h-3.5 text-emerald-500 shrink-0" /> Authorized subject-expert matchmaking

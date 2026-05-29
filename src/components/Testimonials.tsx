@@ -19,7 +19,7 @@ export default function Testimonials() {
       location: "United States (Boston)",
       subject: "Nursing & Public Health",
       university: "Northeastern University",
-      text: "The clinical research blueprints and draft reviews from Assignly saved me when revising my community nursing syllabus project. They didn't do it for me—the 1-on-1 tutoring helped me actually explain the statistical research data with absolute confidence.",
+      text: "The clinical research blueprints and draft reviews from Assignify saved me when revising my community nursing syllabus project. They didn't do it for me—the 1-on-1 tutoring helped me actually explain the statistical research data with absolute confidence.",
       rating: 5
     },
     {
