@@ -1,0 +1,6 @@
+{
+  "name": "Assignly",
+  "description": "Premium global academic support platform delivering expert-guided tutoring, assignments, and study assistance under Assignly.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
