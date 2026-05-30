@@ -342,6 +342,10 @@ export default function AssignmentForm({ onSubmissionsUpdated }: AssignmentFormP
       ? `${latestSubmission.pages} Hour(s)`
       : `${latestSubmission.pages} Page(s) (~${(latestSubmission.wordCount || latestSubmission.pages * 275).toLocaleString()} words)`;
 
+    const fileListForWhatsapp = latestSubmission.files && latestSubmission.files.length > 0
+      ? `\n\n📎 Attached Document Files (${latestSubmission.files.length}):\n` + latestSubmission.files.map((f, i) => `   ${i + 1}. ${f.name} (${(f.size / 1024).toFixed(1)} KB)`).join('\n') + `\n*(⚠️ I am attaching these files manually to this chat now)*`
+      : '';
+
     const message = `Hello Assignify! 🌟 I have registered a secure academic support request. Here are my details:
 
 📚 Subject: ${latestSubmission.course}
@@ -354,8 +358,7 @@ export default function AssignmentForm({ onSubmissionsUpdated }: AssignmentFormP
 ✍️ Citations Style: ${referencingStyle}
 💰 Est. Budget Range: ${sym}${Math.round(latestSubmission.estimatedPrice * 0.9).toLocaleString()} - ${sym}${Math.round(latestSubmission.estimatedPrice * 1.15).toLocaleString()} ${latestSubmission.currency}
 
-Instructions: "${latestSubmission.instructions.substring(0, 150)}${latestSubmission.instructions.length > 150 ? '...' : ''}"
-Files Added: ${latestSubmission.files.length}
+Instructions: "${latestSubmission.instructions.substring(0, 150)}${latestSubmission.instructions.length > 150 ? '...' : ''}"${fileListForWhatsapp}
 
 Can my dedicated graduate helper review files and confirm details on ${latestSubmission.submissionMethod || 'WhatsApp'}? Thank you!`;
 
@@ -369,6 +372,10 @@ Can my dedicated graduate helper review files and confirm details on ${latestSub
     const workloadStr = latestSubmission.assignmentType === 'Tutoring Session'
       ? `${latestSubmission.pages} Hour(s)`
       : `${latestSubmission.pages} Page(s) (~${(latestSubmission.wordCount || latestSubmission.pages * 275).toLocaleString()} words)`;
+
+    const fileListForEmail = latestSubmission.files && latestSubmission.files.length > 0
+      ? `\n\n📎 UPLOADED COURSEWORK FILES TO REVIEW (${latestSubmission.files.length}):\n` + latestSubmission.files.map((f, i) => `   ${i + 1}. ${f.name} (${(f.size / 1024).toFixed(1)} KB)`).join('\n') + `\n\n⚠️ [IMPORTANT SENDER NOTICE: Please manually select/drag these file attachments from your device to this email draft before hitting send so our specialists can immediately review and verify them!] 👋`
+      : '\n📎 Uploaded Files: None';
 
     return `Subject: New Academic Coaching Request - ${latestSubmission.course} (${latestSubmission.assignmentType})
 
@@ -390,7 +397,7 @@ PROJECT INFORMATION:
 - Technical Complexity: ${latestSubmission.difficulty}
 - Scope Check: ${workloadStr}
 - Detailed Bibliographic Citation Formatting: ${referencingStyle}
-- Deadline Target: ${latestSubmission.deadline} (${latestSubmission.urgency})
+- Deadline Target: ${latestSubmission.deadline} (${latestSubmission.urgency})${fileListForEmail}
 
 INSTRUCTIONS & SPECIAL REQUIREMENTS:
 "${latestSubmission.instructions}"
@@ -1139,6 +1146,27 @@ Please connect me with a verified grad assistant as soon as possible.`;
                   </div>
                 </div>
               </div>
+
+              {/* Manual attachment notice */}
+              {latestSubmission.files && latestSubmission.files.length > 0 && (
+                <div className="mt-4 bg-amber-50 border border-amber-200/85 rounded-2xl p-4 text-amber-900 shadow-xs flex gap-3 text-left">
+                  <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="text-xs font-bold text-amber-950">Manual File Attachment Required</h4>
+                    <p className="text-[11px] text-amber-800 leading-relaxed mt-0.5">
+                      Standard web browser security protocols restrict websites from injecting actual binary files directly into your native WhatsApp or default email drafts. 
+                      Please <strong className="font-bold">manually attach</strong> these files when your messaging application launches:
+                    </p>
+                    <div className="mt-2.5 flex flex-wrap gap-2 font-mono text-[10px] bg-white/90 px-3 py-2 rounded-xl border border-amber-200 text-amber-905">
+                      {latestSubmission.files.map((file, idx) => (
+                        <span key={idx} className="inline-flex items-center gap-1 bg-amber-50/60 px-1.5 py-0.5 rounded border border-amber-100">
+                          📄 {file.name} ({(file.size / 1024).toFixed(1)} KB)
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
 
               {/* Action buttons list */}
               <div className="mt-6 space-y-4">

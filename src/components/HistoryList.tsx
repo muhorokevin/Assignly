@@ -49,6 +49,10 @@ export default function HistoryList({ refreshTrigger, onSubmissionsUpdated }: Hi
 
   const getSubWhatsAppURL = (sub: AssignmentSubmission) => {
     const sym = sub.currency === 'USD' ? '$' : sub.currency === 'EUR' ? '€' : sub.currency === 'GBP' ? '£' : '';
+    const fileListForWhatsapp = sub.files && sub.files.length > 0
+      ? `\n\n📎 Attached Document Files (${sub.files.length}):\n` + sub.files.map((f, i) => `   ${i + 1}. ${f.name} (${(f.size / 1024).toFixed(1)} KB)`).join('\n') + `\n*(⚠️ I am attaching these files manually to this chat now)*`
+      : '';
+
     const message = `Hello Assignify! 🌟 I would like to confirm my saved academic support draft:
 
 📚 Subject: ${sub.course}
@@ -57,7 +61,8 @@ export default function HistoryList({ refreshTrigger, onSubmissionsUpdated }: Hi
 📆 Urgency Limit: ${sub.deadline} (${sub.urgency})
 💰 Draft Guide Price: ${sym || ''}${sub.estimatedPrice} ${sub.currency}
 
-Instructions: "${sub.instructions.substring(0, 150)}"
+Instructions: "${sub.instructions.substring(0, 150)}"${fileListForWhatsapp}
+
 Can you connect me with a matching specialist? Thank you!`;
 
     return `https://wa.me/254710974670?text=${encodeURIComponent(message)}`;
