@@ -73,22 +73,22 @@ export default function Testimonials() {
   };
 
   return (
-    <section id="testimonials" className="py-20 bg-transparent border-b border-slate-200/50 dark:border-slate-800/50 transition-colors duration-300 relative overflow-hidden">
+    <section id="testimonials" className="py-20 bg-transparent border-b border-[#e7e5e4] transition-colors duration-300 relative overflow-hidden">
       
       {/* Absolute glow ring */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-blob" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#022c22]/5 rounded-full blur-3xl" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 font-sans">
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-xs uppercase font-bold tracking-widest text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/45 px-3 py-1 rounded-full">
+          <span className="text-xs uppercase font-black tracking-widest text-[#022c22] bg-[#022c22]/10 border border-[#022c22]/20 px-3.5 py-1.5 rounded-full">
             Student Reviews
           </span>
-          <h2 className="mt-4 font-display font-extrabold text-3xl sm:text-4xl text-gray-900 dark:text-white">
-            Trust by Global Students
+          <h2 className="mt-4 font-display font-black text-3xl sm:text-4xl text-[#022c22]">
+            Trusted by Global Students
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-gray-500 dark:text-gray-400">
+          <p className="mt-3 text-sm sm:text-base text-[#022c22]/80 font-bold">
             Real feedback from undergraduate, post-graduate, and dissertation students seeking ethical coaching across top international colleges.
           </p>
         </div>
@@ -98,48 +98,48 @@ export default function Testimonials() {
           <div className="relative">
             
             {/* Main Interactive Card */}
-            <div className="bento-card p-6 sm:p-10 shadow-lg relative min-h-[280px] flex flex-col justify-between">
+            <div className="bg-[#FDFBF7] border-2 border-[#e7e5e4] p-6 sm:p-10 rounded-3xl shadow relative min-h-[280px] flex flex-col justify-between">
               
-              <div className="absolute top-6 right-8 text-gray-200/60 dark:text-gray-800">
-                <Quote className="w-14 h-14 fill-current rotate-180 opacity-40" />
+              <div className="absolute top-6 right-8 text-[#022c22]/10">
+                <Quote className="w-14 h-14 fill-current rotate-180 opacity-20" />
               </div>
 
               <div>
                 {/* Rating Stars */}
                 <div className="flex items-center gap-1 mb-5">
                   {[...Array(testimonials[activeIndex].rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    <Star key={i} className="w-4.5 h-4.5 fill-[#d97706] text-[#d97706]" />
                   ))}
                 </div>
 
                 {/* Text */}
-                <blockquote className="text-base sm:text-lg text-gray-700 dark:text-gray-200 italic leading-relaxed">
+                <blockquote className="text-base sm:text-lg text-[#022c22] italic font-bold leading-relaxed">
                   "{testimonials[activeIndex].text}"
                 </blockquote>
               </div>
 
               {/* Author Info */}
-              <div className="mt-8 pt-6 border-t border-gray-200/50 dark:border-gray-800 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div className="mt-8 pt-6 border-t border-[#e7e5e4] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 rounded-full bg-gradient-to-tr from-blue-600 to-emerald-500 text-white font-bold flex items-center justify-center text-sm shadow-md">
+                  <div className="w-11 h-11 rounded-full bg-[#022c22] text-[#FDFBF7] font-black flex items-center justify-center text-sm shadow border border-[#d97706]/20">
                     {testimonials[activeIndex].name.split(' ').map(n => n[0]).join('')}
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-gray-900 dark:text-white flex items-center gap-1.5">
+                    <h4 className="text-sm font-extrabold text-[#022c22] flex items-center gap-1.5">
                       {testimonials[activeIndex].name}
-                      <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0" />
+                      <CheckCircle className="w-4 h-4 text-[#022c22]/80 shrink-0" />
                     </h4>
-                    <p className="text-[11px] text-gray-500 dark:text-gray-400 font-medium">
-                      Student @ <strong className="text-gray-700 dark:text-gray-300">{testimonials[activeIndex].university}</strong>
+                    <p className="text-[11px] text-[#022c22]/70 font-extrabold">
+                      Student @ <strong className="text-[#022c22]">{testimonials[activeIndex].university}</strong>
                     </p>
                   </div>
                 </div>
 
                 <div className="text-left sm:text-right">
-                  <span className="inline-block px-2.5 py-1 text-[10px] font-bold bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 rounded-full">
+                  <span className="inline-block px-3 py-1 text-[10px] font-black bg-[#022c22]/10 border border-[#022c22]/20 text-[#022c22] rounded-full">
                     {testimonials[activeIndex].subject}
                   </span>
-                  <p className="text-[10px] text-gray-400 mt-1 font-mono">{testimonials[activeIndex].location}</p>
+                  <p className="text-[10px] text-[#022c22]/60 mt-1.5 font-mono font-bold">{testimonials[activeIndex].location}</p>
                 </div>
               </div>
 
@@ -149,7 +149,7 @@ export default function Testimonials() {
             <div className="flex justify-center items-center gap-4 mt-8">
               <button 
                 onClick={handlePrev}
-                className="p-3 bg-white dark:bg-gray-900 border border-gray-150 dark:border-gray-800 text-gray-600 dark:text-gray-400 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 shadow-sm transition-all cursor-pointer"
+                className="p-3 bg-[#FDFBF7] border-2 border-[#e7e5e4] hover:border-[#022c22]/40 text-[#022c22] rounded-full shadow-sm transition-all cursor-pointer hover:bg-[#f4f4f0]"
                 aria-label="Previous Testimonial"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -162,8 +162,8 @@ export default function Testimonials() {
                     onClick={() => setActiveIndex(i)}
                     className={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${
                       activeIndex === i 
-                        ? 'bg-blue-600 w-6' 
-                        : 'bg-gray-300 dark:bg-gray-700'
+                        ? 'bg-[#022c22] w-6' 
+                        : 'bg-[#e7e5e4]'
                     }`}
                     aria-label={`Go to testimonial ${i + 1}`}
                   />
@@ -172,7 +172,7 @@ export default function Testimonials() {
 
               <button 
                 onClick={handleNext}
-                className="p-3 bg-white dark:bg-gray-900 border border-gray-150 dark:border-gray-800 text-gray-600 dark:text-gray-400 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 shadow-sm transition-all cursor-pointer"
+                className="p-3 bg-[#FDFBF7] border-2 border-[#e7e5e4] hover:border-[#022c22]/40 text-[#022c22] rounded-full shadow-sm transition-all cursor-pointer hover:bg-[#f4f4f0]"
                 aria-label="Next Testimonial"
               >
                 <ChevronRight className="w-5 h-5" />

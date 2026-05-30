@@ -34,98 +34,96 @@ export default function Header({ openIntegrityModal }: HeaderProps) {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'py-3 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-200/50' 
+        ? 'py-3 bg-[#FDFBF7]/90 backdrop-blur-xl border-b border-[#e7e5e4] shadow-[0_8px_32px_rgba(2,44,34,0.06)]' 
         : 'py-5 bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
           {/* Logo */}
-          <div className="flex items-center space-x-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <div className="bg-gradient-to-tr from-blue-600 to-emerald-500 p-2 rounded-xl text-white shadow-md shadow-blue-500/20">
-              <GraduationCap className="h-6 w-6" />
+          <div className="flex items-center space-x-2.5 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <div className="bg-[#022c22] p-2 rounded-xl text-white shadow-lg shadow-blue-500/25">
+              <GraduationCap className="h-6 w-6 text-[#d97706]" />
             </div>
-            <span className="font-display font-bold text-xl tracking-tight text-gray-900">
-              Assign<span className="bg-gradient-to-r from-blue-600 to-emerald-500 bg-clip-text text-transparent">ly</span>
+            <span className="font-display font-black text-2xl tracking-tighter text-[#022c22]">
+              Assign<span className="text-[#d97706]">ly</span>
             </span>
           </div>
-
+ 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <button 
               onClick={() => scrollToSection('how-it-works')} 
-              className="text-sm font-semibold text-gray-600 hover:text-blue-600 transition-colors cursor-pointer"
+              className="text-sm font-extrabold text-[#022c22]/80 hover:text-[#d97706] transition-colors cursor-pointer tracking-wide"
             >
               How It Works
             </button>
             <button 
               onClick={() => scrollToSection('estimator-form')} 
-              className="text-sm font-semibold text-gray-600 hover:text-blue-600 transition-colors cursor-pointer flex items-center gap-1.5"
+              className="text-sm font-extrabold text-[#022c22]/80 hover:text-[#d97706] transition-colors cursor-pointer flex items-center gap-1.5 tracking-wide"
             >
               Calculate Price
-              <span className="px-1.5 py-0.5 text-[10px] uppercase font-bold tracking-wider bg-emerald-100 text-emerald-700 rounded">Live</span>
+              <span className="px-1.5 py-0.5 text-[10px] uppercase font-black tracking-widest bg-[#d97706] text-[#FDFBF7] rounded-md animate-pulse">Live</span>
             </button>
             <button 
               onClick={() => scrollToSection('testimonials')} 
-              className="text-sm font-semibold text-gray-600 hover:text-blue-600 transition-colors cursor-pointer"
+              className="text-sm font-extrabold text-[#022c22]/80 hover:text-[#d97706] transition-colors cursor-pointer tracking-wide"
             >
               Testimonials
             </button>
             <button 
               onClick={openIntegrityModal}
-              className="text-sm font-semibold text-gray-600 hover:text-blue-600 transition-colors cursor-pointer flex items-center gap-1"
+              className="text-sm font-extrabold text-[#022c22]/80 hover:text-[#d97706] transition-colors cursor-pointer flex items-center gap-1 tracking-wide"
             >
-              <CheckSquare className="w-4 h-4 text-emerald-500" />
+              <CheckSquare className="w-4 h-4 text-[#d97706] font-extrabold" />
               Academic Honor
             </button>
           </nav>
-
+ 
           {/* Action Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             {/* CTA Button */}
             <button
               onClick={() => scrollToSection('estimator-form')}
-              className="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-bold text-gray-900 rounded-xl group bg-gradient-to-br from-blue-600 to-emerald-500 hover:text-white cursor-pointer"
+              className="px-5 py-2.5 bg-[#022c22] text-[#FDFBF7] text-xs uppercase tracking-widest font-black rounded-xl border border-[#d97706] hover:bg-[#023126] cursor-pointer transition-all duration-300 shadow-md"
             >
-              <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-[10px] group-hover:bg-opacity-0 text-xs uppercase tracking-wider font-semibold">
-                Submit Assignment
-              </span>
+              Submit Assignment
             </button>
           </div>
-
+ 
           {/* Mobile Menu Controls */}
           <div className="flex items-center space-x-3 md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors cursor-pointer"
+              className="p-2 rounded-lg text-slate-200 hover:bg-white/10 transition-colors cursor-pointer"
               aria-label="Toggle Menu"
             >
-              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
-
+ 
         </div>
       </div>
-
+ 
       {/* Mobile Drawer */}
       {isMobileMenuOpen && (
-        <div className="md:hidden glass-panel border-b border-gray-200/50 shadow-lg absolute top-full left-0 right-0 px-4 py-6 space-y-4 flex flex-col items-stretch">
+        <div className="md:hidden bg-[#FDFBF7] border-b border-[#e7e5e4] shadow-2xl absolute top-full left-0 right-0 px-5 py-6 space-y-4 flex flex-col items-stretch backdrop-blur-2xl">
           <button 
             onClick={() => scrollToSection('how-it-works')} 
-            className="text-left py-2 font-medium text-gray-700 hover:text-blue-600 transition-colors"
+            className="text-[#022c22] font-black hover:text-[#d97706] transition-colors text-sm uppercase tracking-wider text-left"
           >
             How It Works
           </button>
           <button 
             onClick={() => scrollToSection('estimator-form')} 
-            className="text-left py-2 font-medium text-gray-700 hover:text-blue-600 transition-colors flex items-center justify-between"
+            className="text-[#022c22] font-black hover:text-[#d97706] transition-colors flex items-center justify-between text-sm uppercase tracking-wider text-left"
           >
             <span>Live Cost Estimator</span>
-            <span className="px-1.5 py-0.5 text-[9px] uppercase font-bold tracking-wider bg-emerald-100 text-emerald-700 rounded">Calculator</span>
+            <span className="px-2 py-0.5 text-[9px] uppercase font-black tracking-widest bg-[#d97706] text-[#FDFBF7] rounded">Calculator</span>
           </button>
           <button 
             onClick={() => scrollToSection('testimonials')} 
-            className="text-left py-2 font-medium text-gray-700 hover:text-blue-600 transition-colors"
+            className="text-[#022c22] font-black hover:text-[#d97706] transition-colors text-sm uppercase tracking-wider text-left"
           >
             Testimonials
           </button>
@@ -134,17 +132,17 @@ export default function Header({ openIntegrityModal }: HeaderProps) {
               setIsMobileMenuOpen(false);
               openIntegrityModal();
             }}
-            className="text-left py-2 font-medium text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-1.5"
+            className="text-[#022c22] font-black hover:text-[#d97706] transition-colors flex items-center gap-1.5 text-sm uppercase tracking-wider text-left"
           >
-            <CheckSquare className="w-4 h-4 text-emerald-500" />
+            <CheckSquare className="w-4 h-4 text-[#d97706]" />
             Academic Integrity Notice
           </button>
-          <hr className="border-gray-200" />
+          <hr className="border-[#e7e5e4]" />
           <button
             onClick={() => scrollToSection('estimator-form')}
-            className="w-full bg-gradient-to-r from-blue-600 to-emerald-500 text-white py-3 px-4 rounded-xl font-medium text-center shadow-md shadow-blue-500/15 hover:shadow-blue-500/25 transition-all text-sm flex items-center justify-center gap-2 cursor-pointer"
+            className="w-full bg-[#022c22] text-[#FDFBF7] py-3.5 px-4 rounded-xl font-black text-center shadow-lg border border-[#d97706] transition-all text-sm uppercase tracking-widest cursor-pointer flex items-center justify-center gap-1.5"
           >
-            Submit Assignment <ArrowRight className="h-4 w-4" />
+            Submit Assignment <ArrowRight className="h-4 w-4 inline-block ml-1" />
           </button>
         </div>
       )}
