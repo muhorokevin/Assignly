@@ -15,7 +15,7 @@ export default function HistoryList({ refreshTrigger, onSubmissionsUpdated }: Hi
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   useEffect(() => {
-    const saved = localStorage.getItem('assignify_submissions');
+    const saved = localStorage.getItem('assignly_submissions') || localStorage.getItem('assignify_submissions');
     if (saved) {
       try {
         setSubmissions(JSON.parse(saved));
@@ -34,13 +34,14 @@ export default function HistoryList({ refreshTrigger, onSubmissionsUpdated }: Hi
   const deleteRecord = (e: React.MouseEvent, id: string) => {
     e.stopPropagation();
     const filtered = submissions.filter(s => s.id !== id);
-    localStorage.setItem('assignify_submissions', JSON.stringify(filtered));
+    localStorage.setItem('assignly_submissions', JSON.stringify(filtered));
     setSubmissions(filtered);
     onSubmissionsUpdated();
   };
 
   const clearAllHistory = () => {
     if (window.confirm("Are you sure you want to clear your local calculations history?")) {
+      localStorage.removeItem('assignly_submissions');
       localStorage.removeItem('assignify_submissions');
       setSubmissions([]);
       onSubmissionsUpdated();
@@ -49,11 +50,9 @@ export default function HistoryList({ refreshTrigger, onSubmissionsUpdated }: Hi
 
   const getSubWhatsAppURL = (sub: AssignmentSubmission) => {
     const sym = sub.currency === 'USD' ? '$' : sub.currency === 'EUR' ? '€' : sub.currency === 'GBP' ? '£' : '';
-    const fileListForWhatsapp = sub.files && sub.files.length > 0
-      ? `\n\n📎 Attached Document Files (${sub.files.length}):\n` + sub.files.map((f, i) => `   ${i + 1}. ${f.name} (${(f.size / 1024).toFixed(1)} KB)`).join('\n') + `\n*(⚠️ I am attaching these files manually to this chat now)*`
-      : '';
+    const fileListForWhatsapp = `\n\n📎 *ATTACHED FILES DISCLOSURE*:\n*(⚠️ Hint: Please manually press attach file button inside WhatsApp to share coursework guidelines, worksheet sheets or screenshots with our verified matched assistants)*`;
 
-    const message = `Hello Assignify! 🌟 I would like to confirm my saved academic support draft:
+    const message = `Hello Assignly! 🌟 I would like to confirm my saved academic support draft:
 
 📚 Subject: ${sub.course}
 📝 Task Type: ${sub.assignmentType}

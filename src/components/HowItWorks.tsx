@@ -1,13 +1,13 @@
 import React from 'react';
-import { UploadCloud, Zap, MessageSquare, GraduationCap, ChevronRight } from 'lucide-react';
+import { FileText, Zap, MessageSquare, GraduationCap, ChevronRight } from 'lucide-react';
 
 export default function HowItWorks() {
   const steps = [
     {
       number: '01',
-      title: 'Upload Assignment Outline',
-      description: 'Upload your syllabus, parameters, screenshots, and guidelines securely on our platform.',
-      icon: UploadCloud,
+      title: 'Describe Coursework Details',
+      description: 'Paste your instructions, instructions prompts, worksheets, regression goals, or rubric text securely in our calculator form.',
+      icon: FileText,
       color: 'from-blue-500 to-indigo-500',
       bgLight: 'bg-blue-50/60 dark:bg-blue-950/20',
       textAccent: 'text-blue-600 dark:text-blue-400'

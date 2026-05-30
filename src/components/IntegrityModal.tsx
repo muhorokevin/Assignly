@@ -19,7 +19,7 @@ export default function IntegrityModal({ isOpen, onClose }: IntegrityModalProps)
             <ShieldCheck className="w-6 h-6 shrink-0" />
             <div>
               <h3 className="font-display font-bold text-sm tracking-wide uppercase">Academic Honor Code</h3>
-              <p className="text-[11px] text-blue-100">Assignify Ethical Guidance Standards</p>
+              <p className="text-[11px] text-blue-100">Assignly Ethical Guidance Standards</p>
             </div>
           </div>
           <button 
@@ -39,7 +39,7 @@ export default function IntegrityModal({ isOpen, onClose }: IntegrityModalProps)
               We empower students globally to learn faster, study deeper, and navigate complex syllabus requirements with absolute integrity.
             </p>
             <p className="leading-relaxed font-semibold">
-              Assignify is designed as a custom tutoring, revision formatting, and project coaching platform. We help you understand technical standards so you can author pristine assignments yourself.
+              Assignly is designed as a custom tutoring, revision formatting, and project coaching platform. We help you understand technical standards so you can author pristine assignments yourself.
             </p>
           </div>
 
@@ -91,7 +91,7 @@ export default function IntegrityModal({ isOpen, onClose }: IntegrityModalProps)
             onClick={onClose}
             className="w-full sm:w-auto px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl cursor-pointer shadow transition-colors text-center"
           >
-            I Accept the Assignify Honor Code
+            I Accept the Assignly Honor Code
           </button>
         </div>
 

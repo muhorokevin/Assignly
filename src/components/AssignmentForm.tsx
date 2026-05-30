@@ -301,17 +301,17 @@ export default function AssignmentForm({ onSubmissionsUpdated }: AssignmentFormP
       deadline,
       urgency,
       instructions,
-      files: uploadedFiles,
+      files: [],
       preferredContact,
       currency,
       estimatedPrice: calculatedPrice,
       createdAt: new Date().toISOString()
     };
 
-    // Save in localStorage under Assignify
-    const saved = localStorage.getItem('assignify_submissions');
+    // Save in localStorage under Assignly
+    const saved = localStorage.getItem('assignly_submissions');
     const existing = saved ? JSON.parse(saved) : [];
-    localStorage.setItem('assignify_submissions', JSON.stringify([newSubmission, ...existing]));
+    localStorage.setItem('assignly_submissions', JSON.stringify([newSubmission, ...existing]));
 
     setLatestSubmission(newSubmission);
     setShowSuccessModal(true);
@@ -342,11 +342,9 @@ export default function AssignmentForm({ onSubmissionsUpdated }: AssignmentFormP
       ? `${latestSubmission.pages} Hour(s)`
       : `${latestSubmission.pages} Page(s) (~${(latestSubmission.wordCount || latestSubmission.pages * 275).toLocaleString()} words)`;
 
-    const fileListForWhatsapp = latestSubmission.files && latestSubmission.files.length > 0
-      ? `\n\n📎 Attached Document Files (${latestSubmission.files.length}):\n` + latestSubmission.files.map((f, i) => `   ${i + 1}. ${f.name} (${(f.size / 1024).toFixed(1)} KB)`).join('\n') + `\n*(⚠️ I am attaching these files manually to this chat now)*`
-      : '';
+    const fileListForWhatsapp = `\n\n📎 *ATTACHED FILES DISCLOSURE*:\n*(⚠️ Hint: Please manually press attach file button inside WhatsApp chat to share your assignments guidelines, tasks, sheets or screenshots with our verified matched assistants)*`;
 
-    const message = `Hello Assignify! 🌟 I have registered a secure academic support request. Here are my details:
+    const message = `Hello Assignly! 🌟 I have registered a secure academic support request. Here are my details:
 
 📚 Subject: ${latestSubmission.course}
 📝 Task Type: ${latestSubmission.assignmentType}
@@ -373,13 +371,11 @@ Can my dedicated graduate helper review files and confirm details on ${latestSub
       ? `${latestSubmission.pages} Hour(s)`
       : `${latestSubmission.pages} Page(s) (~${(latestSubmission.wordCount || latestSubmission.pages * 275).toLocaleString()} words)`;
 
-    const fileListForEmail = latestSubmission.files && latestSubmission.files.length > 0
-      ? `\n\n📎 UPLOADED COURSEWORK FILES TO REVIEW (${latestSubmission.files.length}):\n` + latestSubmission.files.map((f, i) => `   ${i + 1}. ${f.name} (${(f.size / 1024).toFixed(1)} KB)`).join('\n') + `\n\n⚠️ [IMPORTANT SENDER NOTICE: Please manually select/drag these file attachments from your device to this email draft before hitting send so our specialists can immediately review and verify them!] 👋`
-      : '\n📎 Uploaded Files: None';
+    const fileListForEmail = `\n\n📎 ATTACHED FILES FOR REVIEW:\n⚠️ [IMPORTANT SENDER NOTICE: Please manually drag or select your coursework task sheets, PDF files, images, or instructions inside your email writer application before hitting send, so our matching experts can review immediately!] 👋`;
 
     return `Subject: New Academic Coaching Request - ${latestSubmission.course} (${latestSubmission.assignmentType})
 
-Hello Assignify Support Team,
+Hello Assignly Support Team,
 
 I recently submitted my coursework details on the landing page. Here is the copy of my instructions and calculations:
 
@@ -461,87 +457,87 @@ Please connect me with a verified grad assistant as soon as possible.`;
               
               {/* Name */}
               <div id="field-fullName" className="flex flex-col">
-                <label className="text-xs font-bold text-gray-700 mb-1.5 flex items-center gap-1">
-                  Full Name <span className="text-red-500">*</span>
+                <label className="text-[13px] font-extrabold text-slate-900 mb-2 flex items-center gap-1">
+                  Full Name <span className="text-rose-500 font-extrabold">*</span>
                 </label>
                 <input 
                   type="text" 
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   placeholder="e.g. John Doe"
-                  className={`w-full px-4 py-3 rounded-xl border font-semibold text-sm ${
+                  className={`w-full px-4 py-3 rounded-xl border font-bold text-sm text-slate-900 ${
                     formErrors.fullName 
                       ? 'border-red-500 bg-red-50/20 focus:ring-red-400' 
-                      : 'border-gray-200 focus:ring-blue-500 bg-slate-50/30'
+                      : 'border-slate-300 focus:ring-blue-600 bg-slate-50/50'
                   } focus:outline-none focus:ring-2`}
                 />
-                {formErrors.fullName && <span className="text-[10px] text-red-500 font-bold mt-1">{formErrors.fullName}</span>}
+                {formErrors.fullName && <span className="text-[11px] text-red-600 font-extrabold mt-1">{formErrors.fullName}</span>}
               </div>
 
               {/* Email */}
               <div id="field-email" className="flex flex-col">
-                <label className="text-xs font-bold text-gray-700 mb-1.5 flex items-center gap-1">
-                  Email Address <span className="text-red-500">*</span>
+                <label className="text-[13px] font-extrabold text-slate-900 mb-2 flex items-center gap-1">
+                  Email Address <span className="text-rose-500 font-extrabold">*</span>
                 </label>
                 <input 
                   type="email" 
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="e.g. john@university.edu"
-                  className={`w-full px-4 py-3 rounded-xl border font-semibold text-sm ${
+                  className={`w-full px-4 py-3 rounded-xl border font-bold text-sm text-slate-900 ${
                     formErrors.email 
                       ? 'border-red-500 bg-red-50/20 focus:ring-red-400' 
-                      : 'border-gray-200 focus:ring-blue-500 bg-slate-50/30'
+                      : 'border-slate-300 focus:ring-blue-600 bg-slate-50/50'
                   } focus:outline-none focus:ring-2`}
                 />
-                {formErrors.email && <span className="text-[10px] text-red-500 font-bold mt-1">{formErrors.email}</span>}
+                {formErrors.email && <span className="text-[11px] text-red-600 font-extrabold mt-1">{formErrors.email}</span>}
               </div>
 
               {/* Country Select */}
               <div id="field-country" className="flex flex-col">
-                <label className="text-xs font-bold text-gray-700 mb-1.5 flex items-center gap-1">
-                  Select Country (Assigns Currency) <span className="text-red-500">*</span>
+                <label className="text-[13px] font-extrabold text-slate-900 mb-2 flex items-center gap-1">
+                  Select Country (Assigns Currency) <span className="text-rose-500 font-extrabold">*</span>
                 </label>
                 <select 
                   value={country}
                   onChange={(e) => handleCountryChange(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-blue-500 bg-slate-50/30 font-semibold text-sm focus:outline-none"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-blue-600 bg-slate-50/50 font-bold text-slate-900 text-sm focus:outline-none focus:ring-2"
                 >
                   {countriesList.map(item => (
                     <option key={item.name} value={item.name}>{item.name}</option>
                   ))}
                 </select>
-                {formErrors.country && <span className="text-[10px] text-red-500 font-bold mt-1">{formErrors.country}</span>}
+                {formErrors.country && <span className="text-[11px] text-red-600 font-extrabold mt-1">{formErrors.country}</span>}
               </div>
 
               {/* WhatsApp Number with Country Auto Code prefix */}
               <div id="field-whatsappNumber" className="flex flex-col">
-                <label className="text-xs font-bold text-gray-700 mb-1.5 flex items-center gap-1">
-                  WhatsApp Number <span className="text-red-500">*</span>
+                <label className="text-[13px] font-extrabold text-slate-900 mb-2 flex items-center gap-1">
+                  WhatsApp Number <span className="text-rose-500 font-extrabold">*</span>
                 </label>
                 <input 
                   type="text" 
                   value={whatsappNumber}
                   onChange={(e) => setWhatsappNumber(e.target.value)}
                   placeholder="e.g. +447123456789"
-                  className={`w-full px-4 py-3 rounded-xl border font-semibold text-sm ${
+                  className={`w-full px-4 py-3 rounded-xl border font-bold text-sm text-slate-900 ${
                     formErrors.whatsappNumber 
                       ? 'border-red-500 bg-red-50/20 focus:ring-red-400' 
-                      : 'border-gray-200 focus:ring-blue-500 bg-slate-50/30'
+                      : 'border-slate-300 focus:ring-blue-600 bg-slate-50/50'
                   } focus:outline-none focus:ring-2`}
                 />
-                {formErrors.whatsappNumber && <span className="text-[10px] text-red-500 font-bold mt-1">{formErrors.whatsappNumber}</span>}
+                {formErrors.whatsappNumber && <span className="text-[11px] text-red-600 font-extrabold mt-1">{formErrors.whatsappNumber}</span>}
               </div>
 
               {/* Course Subject Dropdown */}
               <div className="flex flex-col">
-                <label className="text-xs font-bold text-gray-700 mb-1.5">
+                <label className="text-[13px] font-extrabold text-slate-900 mb-2">
                   Coursework Subject Title
                 </label>
                 <select 
                   value={course}
                   onChange={(e) => setCourse(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-blue-500 bg-slate-50/30 font-semibold text-sm focus:outline-none"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-blue-600 bg-slate-50/50 font-bold text-slate-900 text-sm focus:outline-none focus:ring-2"
                 >
                   {COURSEWORK_SUBJECTS.map(sub => (
                     <option key={sub} value={sub}>{sub}</option>
@@ -591,7 +587,7 @@ Please connect me with a verified grad assistant as soon as possible.`;
 
               {/* Academic Grading Level */}
               <div className="flex flex-col md:col-span-2">
-                <label className="text-xs font-bold text-gray-700 mb-2">
+                <label className="text-[13px] font-extrabold text-slate-900 mb-2">
                   Academic Level Target
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
@@ -600,10 +596,10 @@ Please connect me with a verified grad assistant as soon as possible.`;
                       key={lvl}
                       type="button"
                       onClick={() => setAcademicLevel(lvl)}
-                      className={`px-2 py-2.5 text-xs font-bold rounded-xl border text-center transition-all cursor-pointer ${
+                      className={`px-2 py-2.5 text-xs font-extrabold rounded-xl border text-center transition-all cursor-pointer ${
                         academicLevel === lvl 
                           ? 'bg-blue-600 text-white border-blue-600 shadow-sm' 
-                          : 'border-gray-200 bg-slate-50/50 text-gray-600 hover:bg-gray-100'
+                          : 'border-slate-300 bg-slate-50 text-slate-800 hover:bg-slate-200 hover:border-slate-400'
                       }`}
                     >
                       {lvl}
@@ -614,10 +610,10 @@ Please connect me with a verified grad assistant as soon as possible.`;
 
               {/* Technical Complexity Rating */}
               <div className="flex flex-col md:col-span-2">
-                <label className="text-xs font-bold text-gray-700 mb-2">
+                <label className="text-[13px] font-extrabold text-slate-900 mb-2">
                   Technical Complexity Level
                 </label>
-                <div className="grid grid-cols-3 gap-2 bg-gray-50 p-1.5 rounded-xl">
+                <div className="grid grid-cols-3 gap-2 bg-slate-100 p-1.5 rounded-xl border border-slate-200">
                   {['Basic', 'Intermediate', 'Advanced'].map(diff => (
                     <button
                       key={diff}
@@ -625,8 +621,8 @@ Please connect me with a verified grad assistant as soon as possible.`;
                       onClick={() => setDifficulty(diff)}
                       className={`py-2 text-xs font-bold rounded-lg text-center transition-all cursor-pointer ${
                         difficulty === diff 
-                          ? 'bg-white text-gray-950 shadow-sm' 
-                          : 'text-gray-550 hover:text-gray-950'
+                          ? 'bg-white text-slate-900 shadow-md font-extrabold border border-slate-200' 
+                          : 'text-slate-700 hover:text-slate-950 hover:bg-slate-50'
                       }`}
                     >
                       {diff}
@@ -637,22 +633,22 @@ Please connect me with a verified grad assistant as soon as possible.`;
 
               {/* Optional University Name */}
               <div className="flex flex-col md:col-span-2">
-                <label className="text-xs font-bold text-gray-700 mb-1.5 flex items-center gap-1">
-                  University / College Context <span className="text-gray-400 font-normal">(Optional)</span>
+                <label className="text-[13px] font-extrabold text-slate-900 mb-1.5 flex items-center gap-1">
+                  University / College Context <span className="text-slate-500 font-semibold">(Optional)</span>
                 </label>
                 <input 
                   type="text" 
                   value={university}
                   onChange={(e) => setUniversity(e.target.value)}
                   placeholder="e.g. University of Nairobi, UCL, Boston College"
-                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-blue-500 bg-slate-50/30 font-semibold text-sm focus:outline-none"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-blue-600 bg-slate-50/50 font-bold text-slate-900 text-sm focus:outline-none focus:ring-2"
                 />
               </div>
 
               {/* Volume pages/words slider */}
-              <div className="flex flex-col md:col-span-2 bg-slate-50/40 p-5 rounded-2xl border border-gray-150">
+              <div className="flex flex-col md:col-span-2 bg-slate-100/50 p-5 rounded-2xl border border-slate-200">
                 <div className="flex justify-between items-center mb-4">
-                  <label className="text-xs font-bold text-gray-700">
+                  <label className="text-[13px] font-extrabold text-slate-900">
                     {assignmentType === 'Tutoring Session' ? 'Coaching Duration' : 'Assignments Workload Measure'}
                   </label>
                   {assignmentType !== 'Tutoring Session' && (
@@ -924,56 +920,7 @@ Please connect me with a verified grad assistant as soon as possible.`;
                 {formErrors.instructions && <span className="text-[10px] text-red-500 font-bold mt-1">{formErrors.instructions}</span>}
               </div>
 
-              {/* Drag and Drop File Upload Area */}
-              <div className="flex flex-col md:col-span-2">
-                <label className="text-xs font-bold text-gray-700 mb-1.5">
-                  Secure Upload supporting documents, syllabi or drafts
-                </label>
-                <div 
-                  onDragEnter={handleDrag}
-                  onDragOver={handleDrag}
-                  onDragLeave={handleDrag}
-                  onDrop={handleDrop}
-                  onClick={() => fileInputRef.current?.click()}
-                  className={`w-full py-6 px-4 rounded-2xl border-2 border-dashed transition-all duration-300 text-center cursor-pointer flex flex-col items-center justify-center ${
-                    isDragActive 
-                      ? 'border-blue-500 bg-blue-50/50' 
-                      : 'border-gray-200 hover:bg-slate-50 bg-slate-50/30'
-                  }`}
-                >
-                  <input 
-                    type="file" 
-                    ref={fileInputRef}
-                    onChange={handleFileChange}
-                    multiple
-                    className="hidden" 
-                  />
-                  <UploadCloud className="w-8 h-8 text-blue-500 mb-2 animate-bounce" />
-                  <p className="text-xs font-bold text-gray-800">Drag files here, or click to browse</p>
-                  <p className="text-[10px] text-gray-400 mt-1">Accepts PDF, Word, Excel, Images, Code, ZIP (Up to 25MB)</p>
-                </div>
-
-                {/* Uploaded files helper badge */}
-                {uploadedFiles.length > 0 && (
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {uploadedFiles.map((file, i) => (
-                      <div key={i} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 text-[11px] font-bold border border-emerald-100 text-emerald-800">
-                        <FileText className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-                        <span className="truncate max-w-[150px]">{file.name}</span>
-                        <button 
-                          type="button" 
-                          onClick={() => removeFile(i)}
-                          className="text-gray-405 hover:text-red-500 transition-colors p-0.5 ml-1"
-                        >
-                          <X className="w-3 h-3" />
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                )}
               </div>
-
-            </div>
 
             {/* Submit Button */}
             <button
@@ -1147,26 +1094,18 @@ Please connect me with a verified grad assistant as soon as possible.`;
                 </div>
               </div>
 
-              {/* Manual attachment notice */}
-              {latestSubmission.files && latestSubmission.files.length > 0 && (
-                <div className="mt-4 bg-amber-50 border border-amber-200/85 rounded-2xl p-4 text-amber-900 shadow-xs flex gap-3 text-left">
-                  <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="text-xs font-bold text-amber-950">Manual File Attachment Required</h4>
-                    <p className="text-[11px] text-amber-800 leading-relaxed mt-0.5">
-                      Standard web browser security protocols restrict websites from injecting actual binary files directly into your native WhatsApp or default email drafts. 
-                      Please <strong className="font-bold">manually attach</strong> these files when your messaging application launches:
-                    </p>
-                    <div className="mt-2.5 flex flex-wrap gap-2 font-mono text-[10px] bg-white/90 px-3 py-2 rounded-xl border border-amber-200 text-amber-905">
-                      {latestSubmission.files.map((file, idx) => (
-                        <span key={idx} className="inline-flex items-center gap-1 bg-amber-50/60 px-1.5 py-0.5 rounded border border-amber-100">
-                          📄 {file.name} ({(file.size / 1024).toFixed(1)} KB)
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+              {/* ALWAYS visible guide instructing students to attach file documents inside WhatsApp/Email client */}
+              <div className="mt-5 bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/80 rounded-2xl p-5 text-amber-950 shadow-sm flex gap-3 text-left">
+                <AlertTriangle className="w-5.5 h-5.5 text-amber-600 shrink-0 mt-0.5 animate-pulse" />
+                <div>
+                  <h4 className="text-xs font-black text-amber-950 uppercase tracking-widest flex items-center gap-1">
+                    📎 Remember to attach your Coursework files!
+                  </h4>
+                  <p className="text-[11.5px] text-amber-800 leading-relaxed mt-1 font-medium">
+                    To trigger an instant evaluation, please <strong className="text-amber-950 font-extrabold underline">manually attach</strong> your instructions, PDFs, worksheet screenshots, or coding briefs directly inside your WhatsApp screen or Email writer when they pop open!
+                  </p>
                 </div>
-              )}
+              </div>
 
               {/* Action buttons list */}
               <div className="mt-6 space-y-4">

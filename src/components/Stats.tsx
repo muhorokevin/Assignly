@@ -87,7 +87,7 @@ export default function Stats() {
           <div className="text-center sm:text-left">
             <h4 className="text-xs font-bold uppercase tracking-wider text-gray-900">Strict Academic Guidance Framework</h4>
             <p className="text-[11px] text-gray-500 mt-0.5 leading-snug">
-              Assignify acts strictly as an educational learning guide. We deliver conceptual models, tutoring support, structural reference papers, and comprehensive dissertation milestones. We strictly prohibit direct coursework submission or cheating.
+              Assignly acts strictly as an educational learning guide. We deliver conceptual models, tutoring support, structural reference papers, and comprehensive dissertation milestones. We strictly prohibit direct coursework submission or cheating.
             </p>
           </div>
         </div>

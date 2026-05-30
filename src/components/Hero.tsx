@@ -33,7 +33,7 @@ export default function Hero() {
 
   const handleWhatsAppChat = () => {
     const url = `https://wa.me/254710974670?text=${encodeURIComponent(
-      "Hello Assignify, I would like to get custom academic support for my coursework. Can you guide me?"
+      "Hello Assignly, I would like to get custom academic support for my coursework. Can you guide me?"
     )}`;
     window.open(url, '_blank', 'noopener,noreferrer');
   };
@@ -54,7 +54,7 @@ export default function Hero() {
             {/* Tagline Pill */}
             <div className="inline-flex items-center gap-1.5 self-center lg:self-start px-3 py-1.5 mb-6 rounded-full bg-emerald-50 border border-emerald-100 text-xs font-semibold text-emerald-700">
               <Sparkles className="w-3.5 h-3.5 animate-pulse text-emerald-500" />
-              <span>World-Class Academic Mentorship & Coaching by Assignify</span>
+              <span>World-Class Academic Mentorship & Coaching by Assignly</span>
             </div>
 
             {/* Core Titles */}
@@ -151,7 +151,7 @@ export default function Hero() {
                   <div className="w-3 h-3 rounded-full bg-red-400" />
                   <div className="w-3 h-3 rounded-full bg-yellow-400" />
                   <div className="w-3 h-3 rounded-full bg-green-400" />
-                  <span className="text-xs font-mono text-gray-400 ml-2">Assignify Tracker v2.6</span>
+                  <span className="text-xs font-mono text-gray-400 ml-2">Assignly Tracker v2.6</span>
                 </div>
                 <span className="px-2 py-0.5 text-[10px] bg-emerald-50 text-emerald-700 font-bold rounded-full flex items-center gap-1">
                   <CheckCircle2 className="w-3 h-3 text-emerald-500" /> Active Support
@@ -222,7 +222,7 @@ export default function Hero() {
 
               {/* Box 3: Progress Tracker */}
               <div className="mt-4 bg-slate-50/50 p-4 rounded-xl border border-gray-200">
-                <span className="text-[10px] uppercase font-bold text-gray-400 block mb-2">Assignify Pipeline</span>
+                <span className="text-[10px] uppercase font-bold text-gray-400 block mb-2">Assignly Pipeline</span>
                 <div className="space-y-3">
                   <div className="flex items-center gap-2.5">
                     <span className={`w-2.5 h-2.5 rounded-full ${activeStep >= 1 ? 'bg-emerald-500 animate-pulse' : 'bg-gray-300'}`} />
@@ -248,7 +248,7 @@ export default function Hero() {
                   <p className="text-[11px] text-gray-800 font-medium">
                     "We can help formatting any coursework or infographic guides starting at just $5! Send details below."
                   </p>
-                  <p className="text-[8px] text-blue-600 text-right mt-1 font-mono font-bold">Sarah (Assignify Support Expert)</p>
+                  <p className="text-[8px] text-blue-600 text-right mt-1 font-mono font-bold">Sarah (Assignly Support Expert)</p>
                 </div>
               </div>
 

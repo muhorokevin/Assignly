@@ -9,7 +9,7 @@ export default function Footer({ openIntegrityModal }: FooterProps) {
   
   const handleWhatsAppChat = () => {
     const url = `https://wa.me/254710974670?text=${encodeURIComponent(
-      "Hello Assignify, I would like to get custom academic support for my coursework. Can you guide me?"
+      "Hello Assignly, I would like to get custom academic support for my coursework. Can you guide me?"
     )}`;
     window.open(url, '_blank', 'noopener,noreferrer');
   };
@@ -28,7 +28,7 @@ export default function Footer({ openIntegrityModal }: FooterProps) {
                 <GraduationCap className="h-5 w-5" />
               </div>
               <span className="font-display font-bold text-lg tracking-tight text-gray-900">
-                Assign<span className="bg-gradient-to-r from-blue-600 to-emerald-500 bg-clip-text text-transparent">ify</span>
+                Assign<span className="bg-gradient-to-r from-blue-600 to-emerald-500 bg-clip-text text-transparent font-black">ly</span>
               </span>
             </div>
             
@@ -107,7 +107,7 @@ export default function Footer({ openIntegrityModal }: FooterProps) {
         {/* Copyright and notices */}
         <div className="flex flex-col sm:flex-row items-center sm:justify-between text-[11px] text-gray-500 gap-4">
           <p className="text-center sm:text-left font-semibold">
-            &copy; {new Date().getFullYear()} Assignify — Personalized Academic Support. All rights reserved globally.
+            &copy; {new Date().getFullYear()} Assignly — Personalized Academic Support. All rights reserved globally.
           </p>
           <div className="flex gap-4 font-bold">
             <a href="#" className="hover:underline hover:text-gray-600">Privacy Policy</a>
