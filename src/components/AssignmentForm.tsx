@@ -17,7 +17,24 @@ const currencies: Record<string, CurrencyConfig> = {
   INR: { code: 'INR', symbol: '₹', rateToUSD: 83.5 },
   AED: { code: 'AED', symbol: 'د.إ', rateToUSD: 3.67 },
   CAD: { code: 'CAD', symbol: 'CA$', rateToUSD: 1.36 },
-  AUD: { code: 'AUD', symbol: 'A$', rateToUSD: 1.51 }
+  AUD: { code: 'AUD', symbol: 'A$', rateToUSD: 1.51 },
+  SAR: { code: 'SAR', symbol: 'SR', rateToUSD: 3.75 },
+  QAR: { code: 'QAR', symbol: 'QR', rateToUSD: 3.64 },
+  OMR: { code: 'OMR', symbol: 'RO', rateToUSD: 0.385 },
+  KWD: { code: 'KWD', symbol: 'KD', rateToUSD: 0.31 },
+  BHD: { code: 'BHD', symbol: 'BD', rateToUSD: 0.38 },
+  MYR: { code: 'MYR', symbol: 'RM', rateToUSD: 4.70 },
+  SGD: { code: 'SGD', symbol: 'S$', rateToUSD: 1.35 },
+  NZD: { code: 'NZD', symbol: 'NZ$', rateToUSD: 1.63 },
+  GHS: { code: 'GHS', symbol: 'GH₵', rateToUSD: 14.5 },
+  RWF: { code: 'RWF', symbol: 'RF', rateToUSD: 1300.0 },
+  UGX: { code: 'UGX', symbol: 'USh', rateToUSD: 3800.0 },
+  TZS: { code: 'TZS', symbol: 'TSh', rateToUSD: 2600.0 },
+  CNY: { code: 'CNY', symbol: '¥', rateToUSD: 7.25 },
+  HKD: { code: 'HKD', symbol: 'HK$', rateToUSD: 7.80 },
+  PKR: { code: 'PKR', symbol: 'Rs', rateToUSD: 278.0 },
+  BDT: { code: 'BDT', symbol: '৳', rateToUSD: 117.0 },
+  CHF: { code: 'CHF', symbol: 'CHF', rateToUSD: 0.91 }
 };
 
 // Base Pricing Configurations in USD - adjusted to start at $5.00!
@@ -88,12 +105,23 @@ const countriesList = [
   { name: 'Ireland', currency: 'EUR', phoneCode: '+353' },
   { name: 'India', currency: 'INR', phoneCode: '+91' },
   { name: 'United Arab Emirates', currency: 'AED', phoneCode: '+971' },
-  { name: 'Saudi Arabia', currency: 'AED', phoneCode: '+966' },
-  { name: 'Qatar', currency: 'AED', phoneCode: '+974' },
-  { name: 'Ghana', currency: 'NGN', phoneCode: '+233' },
-  { name: 'Rwanda', currency: 'KES', phoneCode: '+250' },
-  { name: 'Uganda', currency: 'KES', phoneCode: '+256' },
-  { name: 'Tanzania', currency: 'KES', phoneCode: '+255' },
+  { name: 'Saudi Arabia', currency: 'SAR', phoneCode: '+966' },
+  { name: 'Qatar', currency: 'QAR', phoneCode: '+974' },
+  { name: 'Oman', currency: 'OMR', phoneCode: '+968' },
+  { name: 'Kuwait', currency: 'KWD', phoneCode: '+965' },
+  { name: 'Bahrain', currency: 'BHD', phoneCode: '+973' },
+  { name: 'Malaysia', currency: 'MYR', phoneCode: '+60' },
+  { name: 'Singapore', currency: 'SGD', phoneCode: '+65' },
+  { name: 'New Zealand', currency: 'NZD', phoneCode: '+64' },
+  { name: 'Ghana', currency: 'GHS', phoneCode: '+233' },
+  { name: 'Rwanda', currency: 'RWF', phoneCode: '+250' },
+  { name: 'Uganda', currency: 'UGX', phoneCode: '+256' },
+  { name: 'Tanzania', currency: 'TZS', phoneCode: '+255' },
+  { name: 'China', currency: 'CNY', phoneCode: '+86' },
+  { name: 'Hong Kong', currency: 'HKD', phoneCode: '+852' },
+  { name: 'Pakistan', currency: 'PKR', phoneCode: '+92' },
+  { name: 'Bangladesh', currency: 'BDT', phoneCode: '+880' },
+  { name: 'Switzerland', currency: 'CHF', phoneCode: '+41' },
   { name: 'Other / International', currency: 'USD', phoneCode: '+' }
 ];
 
@@ -150,7 +178,7 @@ export default function AssignmentForm({ onSubmissionsUpdated }: AssignmentFormP
   const [instructions, setInstructions] = useState('');
   const [uploadedFiles, setUploadedFiles] = useState<{ name: string; size: number }[]>([]);
   const [preferredContact, setPreferredContact] = useState<'WhatsApp' | 'Email' | 'Both'>('Both');
-  const [currency, setCurrency] = useState<'USD' | 'EUR' | 'GBP' | 'KES' | 'NGN' | 'ZAR' | 'INR' | 'AED' | 'CAD' | 'AUD'>('GBP');
+  const [currency, setCurrency] = useState<string>('GBP');
   
   // Interface states
   const [isDragActive, setIsDragActive] = useState(false);

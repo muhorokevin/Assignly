@@ -17,13 +17,13 @@ export interface AssignmentSubmission {
   preferredContact: 'WhatsApp' | 'Email' | 'Both';
   submissionMethod?: 'WhatsApp' | 'Email';
   wordCount?: number;
-  currency: 'USD' | 'EUR' | 'GBP' | 'KES' | 'NGN' | 'ZAR' | 'INR' | 'AED' | 'CAD' | 'AUD';
+  currency: string;
   estimatedPrice: number;
   createdAt: string;
 }
 
 export interface CurrencyConfig {
-  code: 'USD' | 'EUR' | 'GBP' | 'KES' | 'NGN' | 'ZAR' | 'INR' | 'AED' | 'CAD' | 'AUD';
+  code: string;
   symbol: string;
   rateToUSD: number; // 1 USD = rate units
 }
